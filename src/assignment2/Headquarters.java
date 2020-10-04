@@ -92,7 +92,7 @@ public class Headquarters implements Containter {
 	}
 
 	public class Iterator implements AvgProvider {
-		private int index;
+		private int index = 0;
 		
 		@Override
 		public double getNextAvg() {

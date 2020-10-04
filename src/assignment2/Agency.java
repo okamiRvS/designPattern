@@ -8,13 +8,11 @@ import java.util.ArrayList;
  *
  */
 public class Agency {
-
 	private String name; // Agency identifier, a name
 	private ArrayList<Integer> shopIncomes; // incomes from the shop
 	private ArrayList<Integer> onlineIncomes; // incomes from the online e-commerce app
 	private boolean change = false;	// flag to use only top five incomes
 	private Memento backup; // Memento class
-
 
 	/**
 	 * Constructs the agency from their name
@@ -84,7 +82,7 @@ public class Agency {
 	public void save() {
 		ArrayList<Integer> copiedShopIncomes = new ArrayList<Integer>(shopIncomes);
 		ArrayList<Integer> copiedOnlineIncomes = new ArrayList<Integer>(onlineIncomes);
-		this.backup = new Memento(copiedShopIncomes, copiedOnlineIncomes, change);
+		this.backup = new Memento(copiedShopIncomes, copiedOnlineIncomes);
 	}
 
 	/**

@@ -2,6 +2,10 @@ package assignment2;
 
 import java.util.ArrayList;
 
+/**
+ * @return One possible way that shall be provided is a weighted sum: The average is computed as
+ *  (c1*average-shop-income + (1 – c1)*average-online-income), where c1 is a configurable number between 0 and 1. 
+ */
 public class WeightAvg implements AvgStrategy{
 
 	@Override
