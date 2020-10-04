@@ -12,7 +12,9 @@ public class Agency {
 	private String name; // Agency identifier, a name
 	private ArrayList<Integer> shopIncomes; // incomes from the shop
 	private ArrayList<Integer> onlineIncomes; // incomes from the online e-commerce app
-	private boolean change = false;
+	private boolean change = false;	// flag to use only top five incomes
+	private Memento backup; // Memento class
+
 
 	/**
 	 * Constructs the agency from their name
@@ -54,6 +56,11 @@ public class Agency {
 		}
 	}
 
+	/**
+	 * Get Average of shop and online incomes
+	 * 
+	 * @return incomes with different strategies
+	 */
 	public double getAverage() {
 		if (change) {
 			TopFiveAvg avg = new TopFiveAvg();
@@ -64,8 +71,27 @@ public class Agency {
 		}
 	}
 
+	/**
+	 * @param false sets default strategy of average, true sets top five average strategy  
+	 */
 	public void setUseOnlyTopFiveIncomes(boolean b) {
 		change = b;
 	}
 
+	/**
+	 * Take frame of Incomes  
+	 */
+	public void save() {
+		ArrayList<Integer> copiedShopIncomes = new ArrayList<Integer>(shopIncomes);
+		ArrayList<Integer> copiedOnlineIncomes = new ArrayList<Integer>(onlineIncomes);
+		this.backup = new Memento(copiedShopIncomes, copiedOnlineIncomes, change);
+	}
+
+	/**
+	 * Restore frame of Incomes  
+	 */
+	public void restore() {
+		this.shopIncomes = backup.getShopIncomes();
+		this.onlineIncomes = backup.getOnlineIncomes();	
+	}	
 }

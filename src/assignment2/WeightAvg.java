@@ -6,6 +6,10 @@ public class WeightAvg implements AvgStrategy{
 
 	@Override
 	public double computeAvg(ArrayList<Integer> shopIncomes, ArrayList<Integer> onlineIncomes) {
+		return computeAvg(shopIncomes, onlineIncomes, 0.5); // default
+	}
+	
+	public double computeAvg(ArrayList<Integer> shopIncomes, ArrayList<Integer> onlineIncomes, double c) {
 		double sizeShopIncomes = shopIncomes.size();
 		double sizeOnlineIncomes = onlineIncomes.size();
 		double sumShop = 0, avgShop;
@@ -21,7 +25,6 @@ public class WeightAvg implements AvgStrategy{
 		}
 		avgOnline = sumOnline / sizeOnlineIncomes;
 
-		return 0.5 * avgShop + (1 - 0.5) * avgOnline;
-	}
-	
+		return c * avgShop + (1 - c) * avgOnline;
+	}	
 }
